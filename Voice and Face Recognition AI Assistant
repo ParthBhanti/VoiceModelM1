@@ -1,0 +1,108 @@
+ Voice and Face Recognition AI Assistant
+
+
+
+This project is a Python-based virtual assistant that listens for a keyword (default: "Jarvis") to activate. It uses voice or face recognition for user authentication and can respond to queries by using OpenAI's GPT-3 API. The assistant can also perform basic system-level commands such as opening applications like Chrome, Notepad, or Dev C++.
+
+## Features
+
+- **Keyword Detection**: The assistant listens for a specific keyword ("Jarvis" by default) to activate.
+- **Voice Recognition**: Users can authenticate using a voice phrase ("Earth is round" by default).
+- **Face Recognition**: Users can authenticate by scanning their face via a webcam (if implemented).
+- **Speech Recognition**: Converts spoken language into text using the Google Speech Recognition API.
+- **GPT-3 Integration**: Responds to user queries using OpenAI’s GPT-3 model.
+- **Text-to-Speech**: Responds to the user via speech using `pyttsx3`.
+- **Perform System Actions**: Can open applications like Google Chrome, Notepad, or Dev C++.
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Python 3.x installed on your machine.
+- The following Python libraries installed:
+  - `speech_recognition`: `pip install SpeechRecognition`
+  - `pyttsx3`: `pip install pyttsx3`
+  - `face_recognition`: `pip install face_recognition`
+  - `openai`: `pip install openai`
+  - `opencv-python`: `pip install opencv-python`
+  - `numpy`: `pip install numpy`
+  
+- API key for OpenAI GPT-3. Replace the placeholder in the code with your actual API key.
+
+## Installation
+
+1. Clone the repository or download the Python script.
+2. Install the required dependencies using the following command:
+   ```
+   pip install SpeechRecognition pyttsx3 face_recognition openai opencv-python numpy
+   ```
+3. Replace the placeholder API key in the script with your own OpenAI API key:
+   ```python
+   openai.api_key = 'your-api-key-here'
+   ```
+
+## Usage
+
+1. Run the script:
+   ```bash
+   python assistant.py
+   ```
+   
+2. The assistant will listen for the keyword "Jarvis." Once detected, it will ask for voice or face recognition authentication.
+   
+3. After successful authentication, the assistant will respond to voice commands. You can:
+
+   - **Ask a question**: The assistant will use GPT-3 to generate a response.
+   - **Open applications**: You can say commands like:
+     - "Open Chrome"
+     - "Open Notepad"
+     - "Open Dev C++"
+   
+4. To exit, say "exit" at any time.
+
+## Functionality
+
+### `listen_for_keyword()`
+This function continuously listens for the predefined keyword ("Jarvis") to activate the assistant.
+
+### `recognize_speech_from_mic()`
+This function records audio from the microphone and converts speech into text using Google Speech Recognition.
+
+### `get_gpt_response(prompt)`
+This function sends a prompt to OpenAI's GPT-3 API and returns the model's response.
+
+### `speak_text(text)`
+This function converts text to speech using `pyttsx3`.
+
+### `perform_action(command)`
+Performs system-level actions such as opening Chrome, Notepad, or Dev C++ based on the user’s voice command.
+
+### `authenticate_by_voice()`
+Authenticates the user by comparing their spoken phrase to a predefined phrase.
+
+### `authenticate_by_face()`
+Uses facial recognition to authenticate the user by comparing the current face against a known image.
+
+### `main()`
+The main function manages the assistant's workflow, starting with keyword detection, authentication, and then handling user queries.
+
+## Customization
+
+You can modify the following variables to suit your needs:
+
+- **Keyword**: Modify the keyword in `listen_for_keyword()` to change the activation phrase.
+- **Voice Authentication Phrase**: Change the authentication phrase in `authenticate_by_voice()` to suit your preference.
+- **Face Authentication Image**: Replace `"recogphoto.jpg"` with an image of the user's face in `authenticate_by_face()`.
+
+## Troubleshooting
+
+- If the voice recognition fails frequently, make sure your microphone is working properly and try adjusting the ambient noise settings in `recognizer.adjust_for_ambient_noise(source)`.
+- For face recognition, ensure the camera is working and the face in the image is clear for better matching accuracy.
+
+## License
+
+This project is licensed under the MIT License. Feel free to modify and distribute it.
+
+---
+
+This **README** file outlines the necessary details for installing, configuring, and using your AI assistant program.
